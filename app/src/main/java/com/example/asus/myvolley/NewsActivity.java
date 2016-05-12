@@ -49,9 +49,11 @@ public class NewsActivity extends AppCompatActivity {
                 new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
+                        Log.d("news",String.valueOf(response));
                         NewsTotal newsTotal= JSON.parseObject(String.valueOf(response),NewsTotal.class);
                         Log.d("news",newsTotal.toString());
                          list=newsTotal.getResult();
+
                         MyNewsAdapter adapter=new MyNewsAdapter(list,mContext);
                         mListView.setAdapter(adapter);
 

@@ -8,9 +8,14 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.android.volley.RequestQueue;
+import com.android.volley.toolbox.Volley;
 import com.example.asus.myvolley.R;
+import com.example.asus.myvolley.bean.BitmapCache;
 import com.example.asus.myvolley.bean.New;
 import com.nostra13.universalimageloader.core.ImageLoader;
+
+import org.xutils.x;
 
 import java.util.List;
 
@@ -57,7 +62,9 @@ public class MyNewsAdapter extends BaseAdapter {
         }
         viewHodler.title.setText(list.get(position).getTitle());
         viewHodler.content.setText(list.get(position).getContent());
-        ImageLoader.getInstance().displayImage(list.get(position).getImg(),viewHodler.imageView);
+        x.image().bind(viewHodler.imageView,list.get(position).getImg());
+
+
         return convertView;
     }
     class ViewHodler{
